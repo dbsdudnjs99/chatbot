@@ -38,7 +38,7 @@ const firebaseConfig = {
 
 db.collection('messages')
   .get()
-  .then(quertySnapshot => {
+  .then(querySnapshot => {
     querySnapshot.forEach(doc => {
         // Access each document's data
         const message = doc.data();

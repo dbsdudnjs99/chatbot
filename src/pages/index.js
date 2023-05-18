@@ -2,7 +2,6 @@ import { Chat } from "@/components/Chat";
 import Head from "next/head";
 import { useEffect, useRef, useState } from "react";
 
-
 export default function Home() {
   /*
     메시지 목록을 저장하는 상태로, 메시지의 형태는 다음과 같음
@@ -81,33 +80,14 @@ export default function Home() {
     setMessages([
       {
         role: "assistant",
-        content: "어 그래, 안녕? 나는 냥냥이야. 오늘 하루 어떻게 보냈나?",
+        content: "안녕? 나는 냥봇이야. 마, 오늘 하루 어땠나?",
       },
     ]);
   };
-  // collection 지정 
-  const chatCollection = collection(db, "chat-GPT");
-  // query 정렬 (기능 노우)
-  const orderQuery= async () => {
-    const q = query(
-      chatCollection,
-      orderBy("time", "desc")
-    );
-  }
-  // Firebase에 마지막 message 저장 
-  const addFirebase = async (messages) => {
-    await addDoc(chatCollection, {time: Date.now(), ...messages[messages.length-1]});
-  }
 
   // 메시지 목록이 업데이트 될 때마다 맨 아래로 스크롤
   useEffect(() => {
     scrollToBottom();
-    // console.log(messages[messages.length0-1])
-    if (messages[messages.legnth-1]) {
-      addFirebase(messages);
-      orderQuery();
-      console.log(Date.now())
-    }
   }, [messages]);
 
   // 컴포넌트가 처음 렌더링 될 때 메시지 목록을 초기화

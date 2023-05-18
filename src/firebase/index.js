@@ -18,10 +18,10 @@ const firebaseConfig = {
   
   export {auth, db};
 
-  function saveMessage(assistant, user, content) {
+  function saveMessage(sender, recipient, content) {
     const messageData = {
-      assistant: assistant,
-      user: user, 
+      sender: sender,
+      recipient: recipient, 
       content: content,
       timestamp: firebase.firestore.FieldValue.serverTimestamp()
     };

@@ -89,10 +89,6 @@ export default function Home() {
   // 메시지 목록이 업데이트 될 때마다 맨 아래로 스크롤
   useEffect(() => {
     scrollToBottom();
-    // console.log(messages[messages.length-1])
-    if (messages[messages.length-1]) {
-      const docRef = addDoc(chatCollection, messages[messages.length-1]);
-    }
   }, [messages]);
 
   // 컴포넌트가 처음 렌더링 될 때 메시지 목록을 초기화

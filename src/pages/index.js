@@ -67,7 +67,7 @@ export default function Home() {
       return;
     }
 
-    //console.log(result);
+    // console.log(result);
 
     // 로딩 상태를 해제하고, 메시지 목록에 응답을 추가
     setLoading(false);

@@ -6,7 +6,7 @@ const configuration = new Configuration({
     apiKey: process.env.OPENAI_API_KEY,
 });
 
-const openai = new OpenAIApi(configuation);
+const openai = new OpenAIApi(configuration);
 
 /*
   System Prompt 설정 

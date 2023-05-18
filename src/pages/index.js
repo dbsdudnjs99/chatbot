@@ -2,6 +2,25 @@ import { Chat } from "@/components/Chat";
 import Head from "next/head";
 import { useEffect, useRef, useState } from "react";
 
+//firebase에 메시지 저장하는법
+function saveMessage(assistant, user, content) {
+  const messageData = {
+    assistant: assistant,
+    user: user, 
+    content: content,
+    timestamp: firebase.firestore.FieldValue.serverTimestamp()
+  };
+
+  db.collection('messages')
+    .add(messageData)
+    .then(docRef => {
+      console.log('메시지가 Firestore에 저장되었습니다. 문서 ID:', docRef.id);
+    })
+    .catch(error => {
+      console.error('메시지 저장 중 오류가 발생했습니다:', error);
+    });
+}
+
 export default function Home() {
   /*
     메시지 목록을 저장하는 상태로, 메시지의 형태는 다음과 같음
@@ -80,7 +99,7 @@ export default function Home() {
     setMessages([
       {
         role: "assistant",
-        content: "안녕? 나는 엘리엇이야. 오늘은 무슨 일이 있었니?",
+        content: "어 그래, 안녕? 나는 냥냥이야. 오늘 하루 어떻게 보냈나?",
       },
     ]);
   };

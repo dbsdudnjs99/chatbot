@@ -35,3 +35,16 @@ const firebaseConfig = {
         console.error('메시지 저장 중 오류가 발생했습니다:', error);
       });
   }
+
+db.collection('messages')
+  .get()
+  .then(quertySnapshot => {
+    querySnapshot.forEach(doc => {
+        // Access each document's data
+        const message = doc.data();
+        console.log('Message, message');
+    });
+  })
+  .catch(error => {
+    console.error('Error retrieving messages:', error);
+  });
